@@ -28,7 +28,7 @@ var h1 = React.createElement('h1', null, 'Hello world!')
 ReactDOM.render(
   h1,
   document.getElementById('example')
-)
+);
 ```
 
 É importante que o método `ReactDOM.render()` só pode ter apenas um elemento por
@@ -41,5 +41,35 @@ var h1 = React.createElement('h1', null, 'Hello world!')
 ReactDOM.render(
   React.createElement('div', null, h1, h1),
   document.getElementById('example')
-)
+);
 ```
+
+Podemos instanciar os elementos também como classes isoladas, que nem no exemplo
+abaixo:
+
+```javascript
+var HelloWorld = React.createClass({
+  render: function render() {
+    return React.createElement('h1', null, 'Hello world!!!');
+  }
+});
+```
+
+E chamaremos a classe, ao invés do render.
+**Nota:** Podemos chamar mais de uma vez dentro de um `createElement()`
+
+```javascript
+ReactDOM.render(
+  React.createElement(
+    'div',
+    null,
+    React.createElement(HelloWorld, null),
+    React.createElement(HelloWorld, null),
+    React.createElement(HelloWorld, null)
+  ),
+  document.getElementById('example')
+);
+```
+
+Existe também uma quantidade muito grande de tags HTML que o react suporta, e
+podem ser vistas no site oficial: <https://facebook.github.io/react/docs/tags-and-attributes.html>
